@@ -204,7 +204,7 @@
         const text = await response.text();
 
         // Replace cdn → fastly inside the fetched file
-        const modified = text.replace(/cdn/g, "fastly");
+        const modified = text.replace("cdn", "fastly");
 
         // Return a new Response object with the modified text
         return new Response(modified, {
