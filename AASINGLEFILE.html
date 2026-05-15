@@ -194,7 +194,14 @@
         <div id="sections-container"> 
         </div>
     </div>
-    <script src="https://fastly.jsdelivr.net/gh/bubbls/ugs-singlefile@latest/games.js"></script>
+<script>
+fetch("https://fastly.jsdelivr.net/gh/bubbls/ugs-singlefile@latest/games.js")
+  .then(r => r.text())
+  .then(code => {
+    code = code.replace("cdn", "fastly");
+    new Function(code)();
+  });
+</script>
     <script>
 (function() {
     const originalFetch = window.fetch;
@@ -215,6 +222,8 @@
     };
 })();
 </script>
+
+
 
    </body>
    </html>
