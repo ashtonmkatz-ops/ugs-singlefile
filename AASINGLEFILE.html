@@ -199,6 +199,13 @@ fetch("https://fastly.jsdelivr.net/gh/bubbls/ugs-singlefile@latest/games.js")
   .then(r => r.text())
   .then(code => {
     code = code.replace("cdn", "fastly");
+    code = code.replace(
+'newWin.document.write(text);',
+`
+text = text.replaceAll("cdn.jsdelivr.net", "fastly.jsdelivr.net");
+newWin.document.write(text);
+`
+);
     new Function(code)();
   });
 </script>
