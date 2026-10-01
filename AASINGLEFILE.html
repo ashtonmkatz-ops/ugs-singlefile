@@ -198,8 +198,8 @@
 fetch("https://fastly.jsdelivr.net/gh/bubbls/ugs-singlefile@latest/games.js")
   .then(r => r.text())
   .then(code => {
-    code = code.replace("cdn", "fastly");
-    code = code.replace(
+    code = code.replaceAll("cdn", "fastly");
+    code = code.replaceAll(
 'newWin.document.write(text);',
 `
 text = text.replaceAll("cdn.jsdelivr.net", "fastly.jsdelivr.net");
